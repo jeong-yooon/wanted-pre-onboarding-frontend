@@ -16,7 +16,7 @@ const Signup: React.FC = () => {
             navigate('/todo');
         } else {
             // 토큰이 로컬 스토리지에 없는 경우 로그인 페이지로 리디렉션
-            navigate('/signin');
+            navigate('/signup');
         }
         }, []); // 빈 배열을 전달하여 한 번만 실행되도록 설정
 
@@ -36,10 +36,10 @@ const Signup: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!isEmailValid(email) || !isPasswordValid(password)) {
-        alert('Please enter valid email and password.');
+    if (password.length < 8) {
+        alert('비밀번호는 8자 이상 입력해주세요.');
         return;
-      }
+    }
     // 여기에 회원가입 로직을 추가하세요.
     try {
         const response = await axios.post('https://www.pre-onboarding-selection-task.shop/auth/signup', {
@@ -119,7 +119,7 @@ const Signup: React.FC = () => {
                <button 
                     type="submit" 
                     className="w-full text-black bg-gray-200 border border-none border-gray-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 my-2"
-                    disabled={!isEmailValid(email) || !isPasswordValid(password)}
+                    // disabled={!isEmailValid(email) || !isPasswordValid(password)}
                     >
                     Create an account
                 </button>
