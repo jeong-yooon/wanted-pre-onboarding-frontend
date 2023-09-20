@@ -246,18 +246,21 @@ function Todo() {
                   // 편집 중인 경우 입력 필드와 편집 버튼 표시
                   <>
                     <input
+                      data-testid="modify-input"
                       type="text"
                       value={editedTodoText}
                       onChange={(e) => setEditedTodoText(e.target.value)}
                       className="ml-3 block w-full text-gray-700 py-1 px-2 leading-tight focus:outline-none"
                     />
                     <button
+                      data-testid="submit-button"
                       onClick={() => handleEditTodo(todo.id)}
                       className="bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
                     >
                       수정 완료
                     </button>
                     <button
+                      data-testid="cancel-button"
                       onClick={() => handleCancelEdit()}
                       className="ml-2 bg-red-500 hover:bg-red-700 border-red-500 hover:border-red-700 text-sm border-4 text-white py-1 px-2 rounded"
                     >
